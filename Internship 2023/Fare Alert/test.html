@@ -1,0 +1,356 @@
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<div class="left-panel">
+		<div class="left-panel-content">
+			<div class="vietnamairlines-logo">
+			</div>			
+			<div id="rectangle"></div>
+			<h1>Thông báo giá tốt PQTESTTT tagmanager!</h1>
+			<p>Cập nhật giá vé máy bay tốt nhất cùng Vietnam Airlines! Quý khách vui lòng điền thông tin tại đây để trở thánh người đầu tiên nhận thông báo khi có giá vé ưu đãi nhé!</p>
+			<div id="rectangle"></div>
+		</div>
+	</div>
+	<div class="right-panel">
+		<form id="myForm" method="POST">
+			<button class="X" id="close">X</button>
+
+			<h2>Thông tin hành trình PQTTT tagmanager</h2>
+
+			<div class="input-field input-field-sector">
+				<input type="text" placeholder="" id="org" />
+				<h3>↔</h3>
+				<input type="text" placeholder="" id="des" />
+			</div>
+
+			<div class="input-field input-field-date">
+				<input type="date" placeholder="Ngày khởi hành" id="departuredate" />
+				<input type="date" placeholder="Ngày về" id="returndate" />
+			</div>
+
+			<div class="input-field input-field-volumn">
+				<input type="number" placeholder="Số lượng hành khách" id="voulmn" />
+			</div>
+			
+			<div class="input-field input-field-amount">
+				<label for="amount">Ngân sách dự kiến (VND):</label>
+				<input type="number" placeholder="1,000,000" id="amount" />
+			</div>
+			
+			<div class="input-field input-field-email">
+				<label for="email">Email:</label>
+				<input type="text" placeholder="Email" id="email" />
+			</div>
+			
+			<div class="input-field input-field-phone">
+				<label for="phone">Số điện thoại - Viber:</label>
+				<input type="text" placeholder="Số điện thoại" id="phone" />
+			</div>
+			<div class="input-field-radio">
+				<label for="many"> <input id="many" name="sendoption" type="radio" value="1" checked/>Gửi nhiều lần</label>
+				<label for="one"> <input id="one" name="sendoption" type="radio" value="2" checked/>Gửi 1 lần</label>
+			</div>
+			<button type="submit" class="signup" id="signUp">Đăng ký</button>
+		</form>
+	</div>                                                                                          
+</div>
+<script>
+    // Extract params into form fields
+    queryString = window.location.search;
+    // queryString = "https://fly.vietnamairlines.com/dx/VNDX/#/flight-selection?journeyType=round-trip&locale=vi-VI&origin=HAN&destination=SGN&ADT=1&CHD=0&INF=0&date=07-06-2023&origin1=SGN&destination1=HAN&date1=07-16-2023&promoCode=&class=Economy&pointOfSale=VN&execution=1f9db9bd-364b-4733-9d6e-a67f901833d6"
+    urlParams = new URLSearchParams(queryString);
+
+    document.getElementById("org").value = urlParams.get('origin');
+    document.getElementById("des").value = urlParams.get('destination');
+    document.getElementById("departuredate").value = urlParams.get('date');
+    document.getElementById("returndate").value = urlParams.get('date1');
+
+    var adult = urlParams.get('ADT') - '0';
+    var children = urlParams.get('CHD') - '0';
+    var infant = urlParams.get('INF') - '0';
+
+    document.getElementById("voulmn").value = adult + children + infant;
+
+</script>
+</body>
+
+
+    <style>
+        .container {
+            background-color: #80a4c7;
+            border-radius: 30px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
+            position: relative;
+            width: 800px;
+            height: 445px;
+        }
+
+        .left-panel{
+            background-color: #0C6F8C;
+            border-radius: 30px 0 0 30px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 265px;
+            height: 445px;
+        }
+
+        .right-panel{
+            background-color: #FFFFFF;
+            border-radius: 0 30px 30px 0;
+            position: absolute;
+            left: 265px;
+            top: 0px;
+            width: 535px;
+            height: 445px;
+        }
+
+        form{
+            padding: 50px 50px 50px 50px;
+        }
+
+        .left-panel-content{
+            padding: 85px 50px 85px 50px;
+        }
+
+        .input-field{
+            box-sizing: border-box;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0px 0px 0px 5px;
+
+            width: 430px;
+            height: 32px;
+
+            background: #FFFFFF;
+            border-bottom: 1px solid #D1D3D6;
+
+            flex: none;
+            flex-grow: 0;
+        }
+
+        input{
+            border: none;
+
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+            color: #7a7777;
+
+            outline: none
+        }
+
+        label{
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+            display: flex;
+            align-items: center;
+            color: #222222;
+        }
+
+        h2{
+            font-family: 'Diavlo';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #006885;
+        }
+
+        h3{
+            color: #006885;
+            font-size: 12px;
+        }
+
+        h1{
+            font-family: 'Diavlo';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 24px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        p{
+            width: 174px;
+            height: 96px;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #E7E7E7;
+        }
+
+        .input-field-sector,
+        .input-field-date{
+            justify-content: space-between;
+        }
+
+        .input-field-radio {
+            border: none;
+            display: flex;
+            flex-direction: row;
+            
+            break-before: always;
+            margin: 5px 5px 15px 0;
+        }
+
+        button.signup{
+            display: flex;
+            padding: 5px;
+            width: 140px;
+            height: 28px;
+            background-color: #0C6F8C;
+            border: 1px solid #0C6F8C;
+            border-radius: 4px;
+            color: #FFFFFF;
+            font-size: 14px;  
+            letter-spacing: 1px;
+            justify-content: center;
+            float: right;
+            cursor: pointer;
+        }
+
+        button.X{
+            background: none;
+            color: #222222;
+            border: none;
+            float: right;
+            cursor: pointer;
+        }
+
+        #rectangle{
+            width: 60px;
+            height: 1px;
+            background: #FFFFFF;
+            flex: none;
+            flex-grow: 0;
+
+            transform: translateX(50px);
+        }
+
+        img{
+            max-width: 100%;
+            max-height: 100%
+        }
+    </style>
+
+  <script>
+    // send Data through API
+    function sendData(formData) {
+        var settings = {
+            "url": "http://127.0.0.1:5400/submit",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json",
+                'Access-Control-Allow-Origin': '*'
+            },
+            "data": JSON.stringify(formData),
+            };
+
+            $.ajax(settings).done(function(response) {
+            console.log(response);
+            });
+    }
+
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        url = window.location.search;
+        // var url = 'https://fly.vietnamairlines.com/dx/VNDX/#/flight-selection?journeyType=round-trip&locale=vi-VI&origin=HAN&destination=SGN&ADT=1&CHD=0&INF=0&date=07-06-2023&origin1=SGN&destination1=HAN&date1=07-16-2023&promoCode=&class=Economy&pointOfSale=VN&execution=1f9db9bd-364b-4733-9d6e-a67f901833d6';
+        var urlParts = url.split('#');
+        var urlWithoutHash = urlParts[0] + urlParts[1];
+        var urlObject = new URL(urlWithoutHash);
+  
+        // Get the form values
+        var departure = document.getElementById('org').value;
+        var destination = document.getElementById('des').value;
+        var departureDate = document.getElementById('departuredate').value;
+        var returnDate = document.getElementById('returndate').value;
+        var numPassenger = document.getElementById('voulmn').value;
+        var budget = document.getElementById('amount').value;
+        var mail = document.getElementById('email').value;
+        var number = document.getElementById('phone').value;
+        var send_once;
+        var send_multi;
+        var adult = urlObject.searchParams.get('ADT');
+        var children = urlObject.searchParams.get('CHD');
+        var infant = urlObject.searchParams.get('INF');
+        var journeyType = urlObject.searchParams.get('journeyType');
+
+        // Convert journey type
+        if (journeyType == "round-trip") {
+            journeyType = "RT";
+        } else {
+            journeyType = "OW";
+        }
+
+        // Get the radio buttons
+        var sendOptionRadios = document.getElementsByName('sendoption');
+
+        // Initialize variables to store the selected value
+        var selectedValue = "";
+
+        // Iterate over the radio buttons
+        for (var i = 0; i < sendOptionRadios.length; i++) {
+            if (sendOptionRadios[i].checked) {
+                selectedValue = sendOptionRadios[i].value;
+                break; // Exit the loop since we found the selected radio button
+            }
+        }
+
+        if (selectedValue == "2") {
+            send_once = 1;
+            send_multi = 0;
+        } else {
+            send_once = 0;
+            send_multi = 1;
+        }
+    
+        // Do something with the form values
+        var formData = {
+            "departure": departure,
+            "destination": destination,
+            "departureDate": departureDate,
+            "returnDate": returnDate,
+            "numPassenger": numPassenger,
+            "budget": budget,
+            "mail": mail,
+            "number": number,
+            "send_once" : send_once,
+            "send_multi" : send_multi,
+            "adult" : adult,
+            "children" : children,
+            "infant" : infant,
+            "journeyType" : journeyType
+        }
+
+        // console.log(formData)
+        sendData(formData);
+
+        // Reset the form
+        document.getElementById('myForm').reset();
+    });
+  </script>
+
+</html>
